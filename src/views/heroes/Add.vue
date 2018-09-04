@@ -15,8 +15,35 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
-    
+    // 1、绑定文本框
+    dat(){
+      return{
+        formData:{
+            name:'',
+            gender:''
+        }
+      }
+    },
+    methods:{
+        // 点击按钮添加数据
+        handleAdd(){
+            axios 
+            .post('http://localhost:3000/heroes',this.formData)
+            .then((response) => {
+                // 判断添加的是否成功
+                if(response.status === 201){
+                    alert('添加成功');
+                    this.$router.push('/heroes')
+                }
+            })
+            .catch((err) =>{
+                console.log(err)
+            })
+        }
+    }
 }
 </script>
 <style>
