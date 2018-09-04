@@ -10,6 +10,10 @@ import './assets/css/index.css';
 // 导入路由模块
 import router from './routers';
 
+// 导入axios 
+import axios from 'axios';
+// 改造完成之后给所原型添加的构造函数
+Vue.prototype.$http = axios
 
 
 new Vue({

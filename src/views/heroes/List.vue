@@ -19,7 +19,8 @@
             <td>{{ item.name }}</td>
             <td>{{item.gender }}</td>
             <td>
-              <a href="edit.html">edit</a>
+              <!-- <a href="edit.html">edit</a> -->
+              <router-link :to="'/heroes/edit/' + item.id" >edit</router-link>
               &nbsp;&nbsp;
               <a href="#" @click.prevent="handleDelete(item.id)">delete</a>
             </td>
@@ -49,7 +50,7 @@ export default {
     },
     methods: {
         loadData(){
-          axios
+         this.$http
             .get('http://localhost:3000/heroes')
             .then((response) => {
                 if(response.status === 200){
